@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+  </head>
+  <body>
+    <main>
+      <!--form -->
+      <section>
+        <form id="form" class="flex justify-center mt-10 gap-5 items-center">
+          <label class="font-bold" for="movie">Movie name:</label>
+          <input
+            class="border border-blue-500 rounded-md w-1/4 p-2 shadow-2xl shadow-blue-500"
+            type="text"
+            name="movie"
+            id="movieInput"
+          />
+          <label class="font-bold" for="movie">Movie Rate:</label>
+          <input
+            class="border border-blue-500 rounded-md w-1/4 p-2 shadow-2xl shadow-blue-500"
+            type="number"
+            name="rate"
+            id="rateInput"
+          />
+          <button
+            id="btn"
+            class="bg-blue-500 text-white font-bold p-2 rounded-md hover:bg-blue-600 cursor-pointer"
+          >
+            Add
+          </button>
+        </form>
+      </section>
+      <!--headerTable-->
+
+      <section>
+        <table class="w-full mt-20">
+          <tr class="border-none bg-blue-200">
+            <th class="py-2 w-3/4">Name</th>
+            <th class="py-2">Rate</th>
+            <th class="py-2">Action</th>
+          </tr>
+          <tr id="domTable" class="text-center">
+            <!--Compelete TS-->
+          </tr>
+        </table>
+      </section>
+    </main>
+    <script type="module" src="src/types.ts"></script>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
