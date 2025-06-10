@@ -4,9 +4,9 @@ interface IMovies {
 }
 
 class Movies implements IMovies {
-  name: string;
-  rate: number;
-
+  public name: string;
+  public rate: number;
+  static idCounter: number = 0;
   constructor(name: string, rate: number) {
     this.name = name;
     this.rate = rate;
@@ -34,34 +34,57 @@ class Movies implements IMovies {
     const movie = Movies.getInputValues();
     if (movie) {
       console.log(movie);
-      Movies.rendertable(movie);
+      Movies.createTableContect(movie);
     }
-  }
-
-  static init() {
-    const form = document.getElementById("form")!;
-    form.addEventListener("submit", Movies.submitForm);
   }
 
   // render table
 
-  static rendertable(movie: Movies) {
-    const trTable = document.getElementById("domTable")!;
+  static createTableContect(movie: Movies) {
+    const tableBody = document.getElementById("domTable")!;
+
+    const rowId = `row-${Movies.idCounter}`;
+
+    const tr = document.createElement("tr");
+
+    tr.setAttribute("id", rowId);
+
     const tdName = document.createElement("td");
-    const tdRate = document.createElement("td");
-    const tdAct = document.createElement("td");
-    const tdActionBtn = document.createElement("button");
-    tdAct.appendChild(tdActionBtn);
-
-    tdActionBtn.textContent = "Delete";
-    tdActionBtn.className = "bg-red p-4 text-white font-bold";
-
+    tdName.className = "bg-blue-100 border-2 border-blue-500";
     tdName.textContent = movie.name;
+
+    const tdRate = document.createElement("td");
+    tdRate.className = "bg-blue-100 border-2 border-blue-500";
     tdRate.textContent = movie.rate.toString();
 
-    trTable.appendChild(tdName);
-    trTable.appendChild(tdRate);
-    trTable.appendChild(tdAct);
+    const tdAct = document.createElement("td");
+    tdAct.className = "bg-blue-100 border-2 border-blue-500 mx-auto";
+    const tdActionBtn = document.createElement("button");
+
+    tdActionBtn.textContent = "Delete";
+    tdActionBtn.className =
+      "bg-red-500 rounded-lg cursor-pointer p-2 text-white font-bold";
+
+    tdActionBtn.dataset.id = rowId;
+
+    tdActionBtn.addEventListener("click", () => {
+      const row = document.getElementById(tdActionBtn.dataset.id!)!;
+      row.remove();
+    });
+
+    tdAct.appendChild(tdActionBtn);
+
+    tr.appendChild(tdName);
+    tr.appendChild(tdRate);
+    tr.appendChild(tdAct);
+
+    tableBody.appendChild(tr);
+
+    Movies.idCounter++;
+  }
+  static init() {
+    const form = document.getElementById("form")!;
+    form.addEventListener("submit", Movies.submitForm);
   }
 }
 

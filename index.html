@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + TS</title>
   </head>
-  <body>
+  <body class="">
     <main>
       <!--form -->
       <section>
@@ -37,14 +37,14 @@
 
       <section>
         <table class="w-full mt-20">
-          <tr class="border-none bg-blue-200">
-            <th class="py-2 w-3/4">Name</th>
-            <th class="py-2">Rate</th>
-            <th class="py-2">Action</th>
-          </tr>
-          <tr id="domTable" class="text-center">
-            <!--Compelete TS-->
-          </tr>
+          <thead>
+            <tr class="border-none bg-blue-300">
+              <th class="py-2 w-3/4">Name</th>
+              <th class="py-2">Rate</th>
+              <th class="py-2">Action</th>
+            </tr>
+          </thead>
+          <tbody id="domTable" class="text-center font-semibold"></tbody>
         </table>
       </section>
     </main>
